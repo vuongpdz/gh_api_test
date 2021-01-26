@@ -12,4 +12,7 @@ gem 'figaro'
 
 group :development do
   gem 'byebug'
+  gem "capistrano", "~> 3.14", require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rbenv', require: false
 end
