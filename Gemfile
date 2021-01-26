@@ -7,4 +7,9 @@ git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 gem 'sinatra'
 gem 'sinatra-contrib'
 gem 'puma'
-gem "octokit", "~> 4.0"
+gem 'octokit', "~> 4.0"
+gem 'figaro'
+
+group :development do
+  gem 'byebug'
+end

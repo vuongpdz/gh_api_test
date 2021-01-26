@@ -1,0 +1,6 @@
+development:
+  github_token: '<Github personal access token>'
+staging:
+  github_token: '<Github personal access token>'
+production:
+  github_token: '<Github personal access token>'
