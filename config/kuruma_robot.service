@@ -1,0 +1,19 @@
+# /usr/lib/systemd/system/kuruma_robot.service
+# sudo systemctl enable kuruma_robot.service
+# sudo systemctl start kuruma_robot.service
+
+[Unit]
+Description=Kuruma Robot
+Wants=nginx.service
+
+[Service]
+Type=simple
+User=zigexn
+WorkingDirectory=/var/www/kuruma_robot
+ExecStart=/home/zigexn/.rbenv/bin/rbenv exec bundle exec rackup -E production -o 127.0.0.1 -p 80
+ExecStop=/bin/kill -s TERM $MAINPID
+Restart=always
+TimeoutSec=10
+
+[Install]
+WantedBy=multi-user.target
