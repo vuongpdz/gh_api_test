@@ -9,7 +9,7 @@ jobs:
 
       - name: Append a random number to README.md
         run: |
-          /home/vuongpd/Desktop/zigexn/zigexn-data/gh_api_test/actions-runner/echo_random.sh >> README.md
+          /home/vuongpd/Desktop/zigexn/zigexn-data/echo_random.sh >> README.md
 
       - name: Create Pull Request
         id: cpr
