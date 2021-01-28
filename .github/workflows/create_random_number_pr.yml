@@ -10,8 +10,7 @@ jobs:
       - name: Create commit
         run: |
           /home/vuongpd/Desktop/zigexn/zigexn-data/gh_api_test/actions-runner/echo_random.sh >> README.md
-          git add -A
-          git commit -m "Add random number to README.md"
+
       - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v3
