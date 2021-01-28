@@ -1,0 +1,43 @@
+name: Main-Auto-Merge
+on:
+  # pull_request:
+  #   types:
+  #     - labeled
+  #     - unlabeled
+  #     - synchronize
+  #     - opened
+  #     - edited
+  #     - ready_for_review
+  #     - reopened
+  #     - unlocked
+  # pull_request_review:
+  #   types:
+  #     - submitted
+  # check_suite:
+  #   types:
+  #     - completed
+  # status: {}
+  repository_dispatch:
+    types: [auto-merge-main-pr]
+jobs:
+  automerge:
+    runs-on: self-hosted
+    steps:
+      - name: Auto
+        uses: "pascalgn/automerge-action@v0.13.0"
+        env:
+          GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+          MERGE_LABELS: "main-auto-merge"
+          MERGE_REMOVE_LABELS: "main-auto-merge"
+          MERGE_METHOD: "squash"
+          MERGE_COMMIT_MESSAGE: "automatic"
+          MERGE_FORKS: "false"
+          MERGE_RETRIES: "0"
+          MERGE_RETRY_SLEEP: "10000"
+          UPDATE_LABELS: "main-auto-merge"
+          UPDATE_METHOD: "rebase"
+      - name: Repository Dispatch event type main-is-auto-merged
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          event-type: main-is-auto-merged

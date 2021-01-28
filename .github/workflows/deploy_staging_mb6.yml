@@ -1,8 +1,12 @@
 name: Deploy-Staging-mb6
 
 # Run this workflow every time a new commit pushed to your repository
-on: push
-
+on:
+  push:
+    branches:
+      - main
+  repository_dispatch:
+    types: [main-is-auto-merged]
 jobs:
   # Set the job key. The key is displayed as the job name
   # when a job name is not provided
