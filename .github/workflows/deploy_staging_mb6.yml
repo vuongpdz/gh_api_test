@@ -25,7 +25,7 @@ jobs:
       # Install Gems
       - name: Run Bundle install
         run: |
-          /bin/bash -lc "bundle install"
+          bundle _2.1.4_ install
 
       - name: Run Capistrano
         run: |
