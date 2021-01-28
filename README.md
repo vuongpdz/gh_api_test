@@ -6,3 +6,6 @@ Run
 ```console
 rackup
 ```
+
+Random numbers should appear here:
+

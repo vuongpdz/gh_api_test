@@ -17,7 +17,7 @@ jobs:
         with:
           # token: ${{ secrets.GITHUB_TOKEN }} (default) or token: ${{ secrets.PAT }}
           commit-message: "Append new random number to README.md"
-          committer: "Kuruma Runner <noreply@zigexn.vn>"
+          committer: "Kuruma-Runner <kuruma-runner-noreply@zigexn.vn>"
           author: "Kuruma Runner"
           branch: "auto-created-pr/add-random-number-to-README"
           branch-suffix: timestamp
