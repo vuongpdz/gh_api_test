@@ -15,7 +15,7 @@ class KurumaRobot < Sinatra::Base
     set :logger, Logger.new("log/#{environment}.log", "weekly")
     before do
       env["rack.logger"] = settings.logger
-  
+
       query = env["QUERY_STRING"]
       msg = format("%s %s for %s",
                    env["REQUEST_METHOD"],
