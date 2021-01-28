@@ -47,4 +47,4 @@ task :restart_robot do
   end
 end
 
-after "deploy:published", "restart_robot"
+# after "deploy:published", "restart_robot"
