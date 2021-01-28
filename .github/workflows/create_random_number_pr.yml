@@ -38,5 +38,5 @@ jobs:
       - name: Repository Dispatch event type auto-merge-main-pr
         uses: peter-evans/repository-dispatch@v1
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.PAT }}
           event-type: auto-merge-main-pr
