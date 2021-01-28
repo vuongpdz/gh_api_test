@@ -1,3 +1,5 @@
 application.yml
 .byebug_history
 log/*.log
+actions-runner/*
+!actions-runner/README.md
