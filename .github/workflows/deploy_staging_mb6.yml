@@ -1,0 +1,27 @@
+name: Deploy-Staging-mb6
+
+# Run this workflow every time a new commit pushed to your repository
+on: push
+
+jobs:
+  # Set the job key. The key is displayed as the job name
+  # when a job name is not provided
+  deploy-staging-mb6:
+    # Name the Job
+    name: Deploy Staging mb6
+    # Set the type of machine to run on
+    runs-on: self-hosted
+
+    steps:
+      # Checks out a copy of your repository on self-hosted runner
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Install Gems
+      - name: Run Bundle install
+        run: |
+          bundle install
+
+      - name: Run Capistrano
+        run: |
+          cap mb6 deploy
