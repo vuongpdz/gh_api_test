@@ -34,7 +34,7 @@ class KurumaRobot < Sinatra::Base
     "
       We will receive master data here,
       create a PR to the repo, merge it to master
-      release master to production
+      release master to production!
     "
     # (1) Get a reference to a branch HEAD (Ref to `main` branch): Get its SHA and the URL
     # (2) Get the URL in (1) and call GitHub API to get the HEAD commit object (its SHA and SHA of the tree, the tree URL)
