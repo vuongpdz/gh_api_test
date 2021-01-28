@@ -25,6 +25,7 @@ jobs:
       # Install Gems
       - name: Run Bundle install
         run: |
+          rvm use $(cat .ruby-version)
           bundle _2.1.4_ install
 
       - name: Run Capistrano
