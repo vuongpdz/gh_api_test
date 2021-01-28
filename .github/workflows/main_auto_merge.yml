@@ -20,7 +20,7 @@ on:
   repository_dispatch:
     types: [auto-merge-main-pr]
 jobs:
-  automerge:
+  main-auto-merge:
     runs-on: self-hosted
     steps:
       - name: Auto

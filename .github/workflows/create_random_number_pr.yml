@@ -1,7 +1,7 @@
 name: Create-Random-Number-PR
 on: workflow_dispatch
 jobs:
-  automerge:
+  create-random-number-pr:
     runs-on: self-hosted
     steps:
       - name: Checkout code
