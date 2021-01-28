@@ -9,3 +9,4 @@ rackup
 
 Random numbers should appear here:
 
+1120
