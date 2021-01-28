@@ -17,6 +17,7 @@ on:
   #   types:
   #     - completed
   # status: {}
+  workflow_dispatch:
   repository_dispatch:
     types: [auto-merge-main-pr]
 jobs:

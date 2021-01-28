@@ -34,10 +34,9 @@ jobs:
         run: |
           echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
           echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
-          echo "REPO ACCESS TOKEN: ${{ secrets.REPO_ACCESS_TOKEN }}, PAT: ${{ secrets.PAT }}"
 
       - name: Repository Dispatch event type auto-merge-main-pr
         uses: peter-evans/repository-dispatch@v1
         with:
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          token: ${{ secrets.REPO_ACCESS_TOKEN }} # Remember to setup REPO_ACCESS_TOKEN in actions/settings/secrets
           event-type: auto-merge-main-pr
