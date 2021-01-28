@@ -1,6 +1,8 @@
-set :user, 'zigexn'
+# frozen_string_literal: true
+
+set :user, "zigexn"
 ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
-ask :staging_server, 'mb6'
+ask :staging_server, "mb6"
 set :rbenv_path, "/home/#{fetch(:user)}/.rbenv"
 
 server fetch(:staging_server), user: fetch(:user), roles: %w{app}
