@@ -1,8 +1,10 @@
+# frozen_string_literal: true
+
 # config valid for current version and patch releases of Capistrano
 lock "~> 3.15.0"
 
 set :application, "kuruma_robot"
-set :repo_url, 'git@github.com:vuongpdz/gh_api_test.git'
+set :repo_url, "git@github.com:vuongpdz/gh_api_test.git"
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
@@ -41,8 +43,8 @@ append :linked_dirs, "log"
 
 task :restart_robot do
   on roles(:app) do
-    execute :service, 'kuruma_robot restart'
+    execute :service, "kuruma_robot restart"
   end
 end
 
-after 'deploy:published', 'restart_robot'
+after "deploy:published", "restart_robot"
