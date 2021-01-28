@@ -3,3 +3,4 @@ application.yml
 log/*.log
 actions-runner/*
 !actions-runner/README.md
+!actions-runner/echo_random.sh
