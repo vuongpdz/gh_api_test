@@ -39,5 +39,5 @@ jobs:
       - name: Repository Dispatch event type main-is-auto-merged
         uses: peter-evans/repository-dispatch@v1
         with:
-          token: ${{ secrets.PAT }}
+          token: ${{ secrets.REPO_ACCESS_TOKEN }}
           event-type: main-is-auto-merged
