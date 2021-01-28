@@ -23,10 +23,6 @@ jobs:
         uses: actions/checkout@v2
 
       # Install Gems
-      - name: Run Bundle install
+      - name: Deploy main branch
         run: |
-          /bin/bash -lc "rvm use $(cat .ruby-version); bundle _2.1.4_ install"
-
-      - name: Run Capistrano
-        run: |
-          cap mb6 deploy
+          /bin/bash -lc "rvm use $(cat .ruby-version); bundle _2.1.4_ install; cap mb6 deploy"
