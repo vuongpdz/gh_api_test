@@ -26,8 +26,8 @@ class KurumaRobot < Sinatra::Base
   end
 
   get "/" do
-    client = Octokit::Client.new(:access_token => ENV["github_token"])
-    client.readme "vuongpdz/gh_api_test", :accept => "application/vnd.github.html"
+    client = Octokit::Client.new(access_token: ENV["github_token"])
+    client.readme "vuongpdz/gh_api_test", accept: "application/vnd.github.html"
   end
 
   post "/update_master_data" do
@@ -39,6 +39,6 @@ class KurumaRobot < Sinatra::Base
     # (1) Get a reference to a branch HEAD (Ref to `main` branch): Get its SHA and the URL
     # (2) Get the URL in (1) and call GitHub API to get the HEAD commit object (its SHA and SHA of the tree, the tree URL)
     # (3) Get the tree in (2) from calling the tree URL
-    # (4) 
+    # (4)
   end
 end
