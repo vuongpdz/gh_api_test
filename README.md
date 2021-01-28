@@ -3,6 +3,6 @@ For Testing GitHub API
 
 Run
 
-```
+```console
 rackup
 ```
