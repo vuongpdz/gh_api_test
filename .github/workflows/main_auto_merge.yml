@@ -19,7 +19,7 @@ on:
   # status: {}
   workflow_dispatch:
   repository_dispatch:
-    types: [auto-merge-main-pr]
+    types: [random-number-pr-created]
 jobs:
   main-auto-merge:
     runs-on: self-hosted
@@ -42,3 +42,4 @@ jobs:
         with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }}
           event-type: main-is-auto-merged
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}"}'

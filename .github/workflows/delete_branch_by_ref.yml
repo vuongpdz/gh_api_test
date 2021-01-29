@@ -1,0 +1,19 @@
+name: Delete-Branch-By-Ref
+on:
+  repository_dispatch:
+    types: [main-is-auto-merged]
+jobs:
+  main-auto-merge:
+    runs-on: self-hosted
+    steps:
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: |
+          echo "$GITHUB_CONTEXT"
+
+      # - name: Cleanup closed PR labeled delete-branch-after-closing
+      #   uses: dawidd6/action-delete-branch@v3
+      #   with:
+      #     github_token: ${{ secrets.GITHUB_TOKEN }}
+      #     branches: ${{ github.event.client_payload.ref }}
