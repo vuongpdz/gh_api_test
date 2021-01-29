@@ -4,7 +4,6 @@ on:
     types:
       - closed
       - labeled
-  workflow_dispatch:
 jobs:
   main-auto-merge:
     runs-on: self-hosted
