@@ -9,9 +9,11 @@ jobs:
   main-auto-merge:
     runs-on: self-hosted
     steps:
-      - name: Check Event Payload
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
         run: |
-          echo "PR head ref: ${{ github.event.pull_request.head.ref }}"
+          echo "$GITHUB_CONTEXT"
 
       - if: github.event.pull_request.state == 'closed' && contains(github.event.pull_request.labels.*.name, 'delete-after-closing')
         name: Cleanup closed PR labeled delete-after-closing
