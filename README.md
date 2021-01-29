@@ -8,7 +8,3 @@ rackup
 ```
 
 Random numbers should appear here:
-
-14512
-24858
-11823
