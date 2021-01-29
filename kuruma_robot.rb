@@ -30,15 +30,11 @@ class KurumaRobot < Sinatra::Base
     client.readme "vuongpdz/gh_api_test", accept: "application/vnd.github.html"
   end
 
-  post "/update_master_data" do
-    "
-      We will receive master data here,
-      create a PR to the repo, merge it to master
-      release master to production
-    "
-    # (1) Get a reference to a branch HEAD (Ref to `main` branch): Get its SHA and the URL
-    # (2) Get the URL in (1) and call GitHub API to get the HEAD commit object (its SHA and SHA of the tree, the tree URL)
-    # (3) Get the tree in (2) from calling the tree URL
-    # (4)
+  post "/commit_random_number_to_main_branch" do
+    client = Octokit::Client.new(access_token: ENV["github_token"])
+    repo = Octokit::Repository.form_url('https://github.com/vuongpdz/gh_api_test')
+    workflow_info = client.workflows(repo)
+    auto_create_pr_wf = workflow_info[:workflows].find { |wf| wf[:name] == 'Create-Random-Number-PR' }
+    client.workflow_dispatch(repo, auto_create_pr_wf[:id], 'main')
   end
 end
