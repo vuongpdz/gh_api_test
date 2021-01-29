@@ -9,8 +9,8 @@ jobs:
   main-auto-merge:
     runs-on: self-hosted
     steps:
-      - if: github.event.pull_request.state == 'closed' && contains(github.event.pull_request.labels.*.name, 'delete-after-closed')
-        name: Cleanup closed PR labeled delete-after-closed
+      - if: github.event.pull_request.state == 'closed' && contains(github.event.pull_request.labels.*.name, 'delete-after-closing')
+        name: Cleanup closed PR labeled delete-after-closing
         uses: dawidd6/action-delete-branch@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
