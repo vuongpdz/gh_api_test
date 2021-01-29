@@ -6,12 +6,15 @@ jobs:
   main-auto-merge:
     runs-on: self-hosted
     steps:
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
+      - name: Get related PR information
+        id: getpr
         run: |
-          echo "$GITHUB_CONTEXT"
+          echo "::set-output name=related-pr::$(curl https://api.github.com/repos/vuongpdz/gh_api_test/pulls/${{ github.event.client_payload.pr_number }})"
 
+      - name: Dump GitHub context
+        run: |
+          echo "${{ toJson(github) }}"
+          echo "${{ fromJson(steps.getpr.outputs.related-pr) }}"
       # - name: Cleanup closed PR labeled delete-branch-after-closing
       #   uses: dawidd6/action-delete-branch@v3
       #   with:

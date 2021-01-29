@@ -40,3 +40,4 @@ jobs:
         with:
           token: ${{ secrets.REPO_ACCESS_TOKEN }} # Remember to setup REPO_ACCESS_TOKEN in actions/settings/secrets
           event-type: random-number-pr-created
+          client-payload: '{ "pr_number": "${{ steps.cpr.outputs.pull-request-number }}" }'
