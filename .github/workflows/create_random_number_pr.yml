@@ -33,7 +33,7 @@ jobs:
       - name: Check outputs
         run: |
           echo "Outputs ${{ toJson(steps.cpr.outputs) }}"
-          echo "GitHub ${{ toJson(steps.cpr.github) }}"
+          echo "GitHub ${{ toJson(github) }}"
 
       - name: Repository Dispatch event type random-number-pr-created
         uses: peter-evans/repository-dispatch@v1
