@@ -9,7 +9,8 @@ jobs:
       - name: Get related PR information
         id: getpr
         run: |
-          echo "::set-output name=related-pr::$(curl https://api.github.com/repos/vuongpdz/gh_api_test/pulls/${{ github.event.client_payload.pr_number }})"
+          RELATED_PR_INFO=$(curl https://api.github.com/repos/vuongpdz/gh_api_test/pulls/${{ github.event.client_payload.pr_number }})
+          echo "::set-output name=related-pr::$RELATED_PR_INFO"
 
       - name: Dump GitHub context
         run: |
