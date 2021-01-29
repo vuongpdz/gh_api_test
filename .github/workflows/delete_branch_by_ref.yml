@@ -11,12 +11,15 @@ jobs:
         env:
           RELATED_PR_INFO: curl https://api.github.com/repos/vuongpdz/gh_api_test/pulls/${{ github.event.client_payload.pr_number }}
         run: |
+          RELATED_PR_INFO="${RELATED_PR_INFO//'%'/'%25'}"
+          RELATED_PR_INFO="${RELATED_PR_INFO//$'\n'/'%0A'}"
+          RELATED_PR_INFO="${RELATED_PR_INFO//$'\r'/'%0D'}"
           echo "::set-output name=related-pr::$RELATED_PR_INFO"
 
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
-          RELATED_PR_INFO: ${{ fromJson(steps.getpr.outputs.related-pr) }} 
+          RELATED_PR_INFO: ${{ fromJson(steps.getpr.outputs.related-pr) }}
         run: |
           echo "$GITHUB_CONTEXT"
           echo "$RELATED_PR_INFO"
