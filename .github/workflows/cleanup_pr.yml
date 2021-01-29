@@ -9,6 +9,10 @@ jobs:
   main-auto-merge:
     runs-on: self-hosted
     steps:
+      - name: Check Event Payload
+        run: |
+          echo "PR head ref: ${{ github.event.pull_request.head.ref }}"
+
       - if: github.event.pull_request.state == 'closed' && contains(github.event.pull_request.labels.*.name, 'delete-after-closing')
         name: Cleanup closed PR labeled delete-after-closing
         uses: dawidd6/action-delete-branch@v3
