@@ -32,8 +32,8 @@ jobs:
 
       - name: Check outputs
         run: |
-          echo "Pull Request Number - ${{ steps.cpr.outputs.pull-request-number }}"
-          echo "Pull Request URL - ${{ steps.cpr.outputs.pull-request-url }}"
+          echo "Outputs ${{ toJson(steps.cpr.outputs) }}"
+          echo "GitHub ${{ toJson(steps.cpr.github) }}"
 
       - name: Repository Dispatch event type random-number-pr-created
         uses: peter-evans/repository-dispatch@v1
