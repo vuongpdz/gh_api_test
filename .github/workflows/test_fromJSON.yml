@@ -8,8 +8,6 @@ jobs:
         id: getpr
         run: |
           echo "::set-output name=pr-branch::$(curl -s https://api.github.com/repos/vuongpdz/gh_api_test/pulls/19 | jq '.head.ref' | sed 's/\"//g')"
-
-      - name: Dump GitHub context
+      - name: Check outputs
         run: |
-          echo "${{ toJson(github) }}"
           echo "${{ fromJson(steps.getpr.outputs.pr-branch) }}"
