@@ -7,22 +7,12 @@ jobs:
       - name: Get related PR information
         id: getpr
         run: |
-          curl -s https://api.github.com/repos/vuongpdz/gh_api_test/pulls/19 > pr-19.json
-          content=`cat pr-19.json`
-          # the following lines are only required for multi line json
-          content="${content//'%'/'%25'}"
-          content="${content//$'\n'/'%0A'}"
-          content="${content//$'\r'/'%0D'}"
-          # end of optional handling for multi line json
-          echo "::set-output name=related-pr::$content"
+          echo "::set-output name=pr-branch::$(curl -s https://api.github.com/repos/vuongpdz/gh_api_test/pulls/19 | jq '.head.ref' | sed 's/\"//g')"
 
       - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-          RELATED_PR_INFO: ${{ fromJson(steps.getpr.outputs.related-pr) }}
         run: |
-          echo "$GITHUB_CONTEXT"
-          echo "$RELATED_PR_INFO"
+          echo "${{ toJson(github) }}"
+          echo "${{ fromJson(steps.getpr.outputs.pr-branch) }}"
       # - name: Cleanup closed PR labeled delete-branch-after-closing
       #   uses: dawidd6/action-delete-branch@v3
       #   with:
