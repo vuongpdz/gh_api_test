@@ -8,23 +8,11 @@ jobs:
     steps:
       - name: Get related PR information
         id: getpr
-        env:
-          RELATED_PR_INFO: curl https://api.github.com/repos/vuongpdz/gh_api_test/pulls/${{ github.event.client_payload.pr_number }}
         run: |
-          RELATED_PR_INFO="${RELATED_PR_INFO//'%'/'%25'}"
-          RELATED_PR_INFO="${RELATED_PR_INFO//$'\n'/'%0A'}"
-          RELATED_PR_INFO="${RELATED_PR_INFO//$'\r'/'%0D'}"
-          echo "::set-output name=related-pr::$RELATED_PR_INFO"
+          echo "::set-output name=pr-branch::$(curl -s https://api.github.com/repos/vuongpdz/gh_api_test/pulls/${{ github.event.client_payload.pr_number }} | jq '.head.ref' | sed 's/\"//g')"
 
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-          RELATED_PR_INFO: ${{ fromJson(steps.getpr.outputs.related-pr) }}
-        run: |
-          echo "$GITHUB_CONTEXT"
-          echo "$RELATED_PR_INFO"
-      # - name: Cleanup closed PR labeled delete-branch-after-closing
-      #   uses: dawidd6/action-delete-branch@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     branches: ${{ github.event.client_payload.ref }}
+      - name: Cleanup closed PR labeled delete-branch-after-closing
+        uses: dawidd6/action-delete-branch@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branches: ${{ steps.getpr.outputs.pr-branch }}
