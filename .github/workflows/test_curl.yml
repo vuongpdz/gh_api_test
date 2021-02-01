@@ -1,7 +1,7 @@
-name: Test-fromJSON
+name: Test-CURL
 on: workflow_dispatch
 jobs:
-  test-parsing-pr-19-using-curl:
+  test-getting-pr-19-head-ref-using-curl:
     runs-on: self-hosted
     steps:
       - name: Get related PR information
@@ -10,4 +10,4 @@ jobs:
           echo "::set-output name=pr-branch::$(curl -s https://api.github.com/repos/vuongpdz/gh_api_test/pulls/19 | jq '.head.ref' | sed 's/\"//g')"
       - name: Check outputs
         run: |
-          echo "${{ fromJson(steps.getpr.outputs.pr-branch) }}"
+          echo "${{ steps.getpr.outputs.pr-branch }}"
