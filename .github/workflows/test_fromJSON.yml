@@ -6,9 +6,8 @@ jobs:
     steps:
       - name: Get related PR information
         id: getpr
-        env:
-          RELATED_PR_INFO: curl https://api.github.com/repos/vuongpdz/gh_api_test/pulls/19
         run: |
+          RELATED_PR_INFO=$(curl https://api.github.com/repos/vuongpdz/gh_api_test/pulls/19)
           echo "$RELATED_PR_INFO"
           RELATED_PR_INFO="${RELATED_PR_INFO//'%'/'%25'}"
           RELATED_PR_INFO="${RELATED_PR_INFO//$'\n'/'%0A'}"
