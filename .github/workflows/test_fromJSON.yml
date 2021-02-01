@@ -8,11 +8,6 @@ jobs:
         id: getpr
         run: |
           RELATED_PR_INFO=$(curl https://api.github.com/repos/vuongpdz/gh_api_test/pulls/19)
-          echo "$RELATED_PR_INFO"
-          RELATED_PR_INFO="${RELATED_PR_INFO//'%'/'%25'}"
-          RELATED_PR_INFO="${RELATED_PR_INFO//$'\n'/'%0A'}"
-          RELATED_PR_INFO="${RELATED_PR_INFO//$'\r'/'%0D'}"
-          echo "$RELATED_PR_INFO"
           echo "::set-output name=related-pr::$RELATED_PR_INFO"
 
       - name: Dump GitHub context
