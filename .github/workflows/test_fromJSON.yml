@@ -7,8 +7,14 @@ jobs:
       - name: Get related PR information
         id: getpr
         run: |
-          RELATED_PR_INFO=$(curl https://api.github.com/repos/vuongpdz/gh_api_test/pulls/19)
-          echo "::set-output name=related-pr::$RELATED_PR_INFO"
+          curl -s https://api.github.com/repos/vuongpdz/gh_api_test/pulls/19 > pr-19.json
+          content=`cat pr-19.json`
+          # the following lines are only required for multi line json
+          content="${content//'%'/'%25'}"
+          content="${content//$'\n'/'%0A'}"
+          content="${content//$'\r'/'%0D'}"
+          # end of optional handling for multi line json
+          echo "::set-output name=related-pr::$content"
 
       - name: Dump GitHub context
         env:
