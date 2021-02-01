@@ -13,8 +13,3 @@ jobs:
         run: |
           echo "${{ toJson(github) }}"
           echo "${{ fromJson(steps.getpr.outputs.pr-branch) }}"
-      # - name: Cleanup closed PR labeled delete-branch-after-closing
-      #   uses: dawidd6/action-delete-branch@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     branches: ${{ github.event.client_payload.ref }}
