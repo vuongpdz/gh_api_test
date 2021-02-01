@@ -1,7 +1,7 @@
 name: Test-fromJSON
 on: workflow_dispatch
 jobs:
-  main-auto-merge:
+  test-parsing-pr-19-using-curl:
     runs-on: self-hosted
     steps:
       - name: Get related PR information
