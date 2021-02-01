@@ -1,0 +1,16 @@
+[Unit]
+Description=Local GitHub Actions Runner
+
+After=network.target syslog.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+User=vuongpd
+
+WorkingDirectory=/home/vuongpd/Desktop/zigexn/zigexn-data/actions_runner
+ExecStart=/bin/bash -lc "./run.sh"
+
+ExecStop=/bin/kill -TERM $MAINPID
