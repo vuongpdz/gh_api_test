@@ -1,4 +1,4 @@
-name: Test-JSON-Parse
+name: Test-fromJSON
 on: workflow_dispatch
 jobs:
   main-auto-merge:
