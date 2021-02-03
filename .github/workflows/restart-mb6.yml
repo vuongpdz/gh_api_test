@@ -11,5 +11,4 @@ jobs:
 
       - name: Sending Slack notification (lityourcode's general channel)
         run: |
-          curl -X POST -H 'Content-Type: application/json' --data \
-            '{"text": "<!channel> MB6 APP & API are restarted!"}' ${{ secrets.LITYOURCODE_GENERAL_SLACK_URL }}
+          curl -X POST -H 'Content-Type: application/json' --data '{"text": "<!channel> MB6 APP & API are restarted!"}' ${{ secrets.LITYOURCODE_GENERAL_SLACK_URL }}
