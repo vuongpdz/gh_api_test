@@ -1,0 +1,20 @@
+name: Restart-MB6
+on: workflow_dispatch
+jobs:
+  restart-mb6:
+    runs-on: self-hosted
+    steps:
+      - name: Restart the application using Capistrano
+        run: |
+          cd /home/vuongpd/Desktop/zigexn/usedcar_v2
+          cap mobi6_vn deploy:restart
+          cd /home/vuongpd/Desktop/zigexn/usedcar_api
+          cap mobi6_vn deploy:restart
+
+      - name: Sending Slack notification
+        env:
+          SLACK_ENDPOINT: https://hooks.slack.com/services/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 # lityourcode's general channel
+        run: |
+          curl -X POST -H 'Content-Type: application/json' --data \
+            '{"text": "<!channel> MB6 APP & API are restarted!"}' \
+            $SLACK_ENDPOINT
