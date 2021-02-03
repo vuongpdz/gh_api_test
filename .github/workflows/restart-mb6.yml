@@ -6,8 +6,8 @@ jobs:
     steps:
       - name: Restart the application using Capistrano
         run: |
-          /bin/bash -lc "ssh-add ~/.ssh/id_rsa_zigexn; cd /home/vuongpd/Desktop/zigexn/usedcar_v2; cap mobi6_vn deploy:restart"
-          /bin/bash -lc "ssh-add ~/.ssh/id_rsa_zigexn; cd /home/vuongpd/Desktop/zigexn/usedcar_api; cap mobi6_vn deploy:restart"
+          /bin/bash -lc "ssh-add ~/.ssh/id_rsa_zigexn; cd /home/vuongpd/Desktop/zigexn/usedcar_v2; bundle exec cap mobi6_vn deploy:restart"
+          /bin/bash -lc "ssh-add ~/.ssh/id_rsa_zigexn; cd /home/vuongpd/Desktop/zigexn/usedcar_api; bundle exec cap mobi6_vn deploy:restart"
 
       - name: Sending Slack notification (lityourcode's general channel)
         run: |
