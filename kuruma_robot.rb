@@ -32,7 +32,7 @@ class KurumaRobot < Sinatra::Base
 
   post "/commit_random_number_to_main_branch" do
     client = Octokit::Client.new(access_token: ENV["github_token"])
-    repo = Octokit::Repository.form_url('https://github.com/vuongpdz/gh_api_test')
+    repo = Octokit::Repository.from_url('https://github.com/vuongpdz/gh_api_test')
     workflow_info = client.workflows(repo)
     auto_create_pr_wf = workflow_info[:workflows].find { |wf| wf[:name] == 'Create-Random-Number-PR' }
     client.workflow_dispatch(repo, auto_create_pr_wf[:id], 'main')
